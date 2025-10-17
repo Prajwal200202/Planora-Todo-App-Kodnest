@@ -11,9 +11,23 @@ const App = () => {
     setTasks([...tasks, Task]);
   }
 
+  const updateTask = (idx) => {
+    setTasks(prev=>prev.map((task,i)=>i===idx ? {...task, completed:!task.completed} :task));
+  }
+
+  const deleteTask = (idx) => {
+    setTasks(prev => prev.filter((task,i)=>i!==idx));
+  }
+
+  const clearAllTasks = ()=>{
+    setTasks([]);
+  }
+
   useEffect(() => {
+
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    console.log('Eff Running');
+    console.log('1st Eff Running');
+
   });
 
   return (
@@ -21,10 +35,15 @@ const App = () => {
       <h1 className='text-4xl font-bold mb-2 text-gray-800/90'>Planora</h1>
       <p className='font-semibold mb-6 text-gray-700/80'>Our Friendly TaskManager</p>
       <Taskbar addTask={addTask} />
-      <TaskList />
-      <ProgressBar />
+      <TaskList tasks={tasks}
+        deleteTask={deleteTask}
+        updateTask={updateTask}
+      />
+      <ProgressBar tasks={tasks}/>
       {tasks.length > 0 ?
-        <button className='bg-red-500 text-white px-6 py-1 rounded text-lg hover:bg-red-700 hover:scale-105'>Clear All Tasks</button>
+        <button className='bg-red-500 text-white px-6 py-1 rounded text-lg hover:bg-red-700 hover:scale-105'
+        onClick={clearAllTasks}
+        >Clear All Tasks</button>
         : ''}
 
     </div>

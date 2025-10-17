@@ -3,20 +3,24 @@ import { useState } from 'react'
 const Taskbar = ({ addTask }) => {
   const [Task, setTask] = useState({
     text: '',
-    priority: 'low',
-    category: 'general',
+    priority: 'Low',
+    category: 'General',
     completed: false,
   })
 
   const handleForm = (e) => {
     e.preventDefault();
 
+    if(Task.text === ''){
+      alert('Please Enter some task.');
+      return;
+    }
     addTask(Task);
 
     setTask({
       text: '',
-      priority: 'low',
-      category: 'general',
+      priority: 'Low',
+      category: 'General',
       completed: false,
     });
   }
@@ -43,18 +47,18 @@ const Taskbar = ({ addTask }) => {
             value={Task.priority}
             onChange={(e) => setTask({ ...Task, [e.target.name]: e.target.value })}
           >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
           </select>
           <select name='category'
             className='border border-gray-200 rounded-lg focus:outline-none pl-1'
             value={Task.category}
             onChange={(e) => setTask({ ...Task, [e.target.name]: e.target.value })}
           >
-            <option value="general">General</option>
-            <option value="work">Work</option>
-            <option value="personal">Personal</option>
+            <option value="General">General</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
           </select>
         </div>
       </form>
