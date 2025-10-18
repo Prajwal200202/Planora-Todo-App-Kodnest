@@ -9,10 +9,10 @@ const TaskList = ({ tasks, updateTask, deleteTask }) => {
           <li className={task.completed ? 'line-through text-gray-700/70' : ''}
           >{task.text} <small>({task.priority}, {task.category})</small> </li>
           <div className='flex gap-6'>
-            <button className='text-sm text-green-600 cursor-pointer'
+            <button className='text-sm text-green-600 cursor-pointer hover:scale-105 hover:text-green-800'
             onClick={()=>updateTask(idx)}
             >{task.completed ? 'Undo':'Complete'}</button>
-            <button className='text-sm text-green-600 cursor-pointer'
+            <button className='text-sm text-green-600 cursor-pointer hover:scale-105 hover:text-green-800'
             onClick={()=>deleteTask(idx)}
             >Delete</button>
           </div>

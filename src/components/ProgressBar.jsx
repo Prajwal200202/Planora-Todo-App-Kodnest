@@ -16,7 +16,7 @@ const ProgressBar = ({ tasks }) => {
               style={{ width: `${progress}%` }}
             ></div>
           </div>
-          <div className='text-lg text-gray-600'>{todo} out of {tasks.length} completed</div>
+          <div className='text-lg text-gray-600 text-center'>{todo} out of {tasks.length} completed</div>
         </div>
         : <div className='text-gray-600 text-xl text-center'> No Tasks Added...
         </div>}

@@ -24,10 +24,7 @@ const App = () => {
   }
 
   useEffect(() => {
-
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    console.log('1st Eff Running');
-
   });
 
   return (
